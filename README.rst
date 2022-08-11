@@ -6,24 +6,25 @@ Introduction
     :target: https://circuitpython-sparkfun-qwiicquadsolidstaterelay.readthedocs.io/
     :alt: Documentation Status
 
-
-
 .. image:: https://img.shields.io/discord/327254708534116352.svg
     :target: https://adafru.it/discord
     :alt: Discord
-
 
 .. image:: https://github.com/gbeland/CircuitPython_Sparkfun_QwiicQuadSolidStateRelay/workflows/Build%20CI/badge.svg
     :target: https://github.com/gbeland/CircuitPython_Sparkfun_QwiicQuadSolidStateRelay/actions
     :alt: Build Status
 
-
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-CircuitPython library for the Sparkfun Quad Solid State Qwiic Relay
+CircuitPython library for SparkFun Qwiic Quad Solid State Relay Kit (COM-16833).
 
+.. image:: https://cdn.sparkfun.com//assets/parts/1/5/7/5/4/16833-SparkFun_Qwiic_Quad_Solid_State_Relay_Kit-12.jpg
+    :target: https://www.sparkfun.com/products/16833
+    :alt: SparkFun Qwiic Quad Solid State Relay Kit (COM-16833)
+
+`SparkFun Qwiic Quad Solid State Relay Kit (COM-16566) <https://www.sparkfun.com/products/16833>`_
 
 Dependencies
 =============
@@ -31,6 +32,7 @@ This driver depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 * `Bus Device <https://github.com/adafruit/Adafruit_CircuitPython_BusDevice>`_
+* `SparkFun Qwiic Quad Solid State Relay Kit (COM-16566) Hardware <https://www.sparkfun.com/products/16833>`_
 
 Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
@@ -95,10 +97,41 @@ Or the following command to update an existing version:
 
 Usage Example
 =============
+.. code-block:: code-block
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+    # import the CircuitPython board and busio libraries
+    import board
+    import sparkfun_qwiicquadsolidstaterelay
 
+    # Create bus object using the board's I2C port
+    i2c = board.I2C()
+
+    # Note: default i2c address is 8
+    relay = None
+    try:
+        relay = sparkfun_qwiicquadsolidstaterelay.Sparkfun_QwiicQuadSolidStateRelay(i2c)
+        print("Opened: Relay Controller")
+        if relay.connected:
+            print("Relay connected. ")
+        else:
+            print("Relay does not appear to be connected. Please check wiring.")
+    except Exception as e:
+        print("Error: Could not open Relay Controller Exception:" + str(e))
+
+    # For a different address use QwiicRelay(i2c, address)
+    # Warning - this is stored in non-volitile memory and you must remember the setting to change it back to the default address of 8.
+    # relay.set_i2c_address(9)
+    
+    relay.on(1)
+    relay.on(2)
+    relay.on(3)
+    relay.on(4)
+    relay.off(1)
+    relay.off(4)
+    relay.all_toggle()
+    relay.all_on()
+    relay.all_off()
+    
 Documentation
 =============
 API documentation for this library can be found on `Read the Docs <https://circuitpython-sparkfun-qwiicquadsolidstaterelay.readthedocs.io/>`_.
