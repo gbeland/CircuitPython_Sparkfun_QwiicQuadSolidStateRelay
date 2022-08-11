@@ -14,17 +14,16 @@ Implementation Notes
 --------------------
 
 **Hardware:**
-* `SparkFun Qwiic Quad Solid State Relay Kit (COM-16566) Hardware <https://www.sparkfun.com/products/16833>`_
+
+* SparkFun Qwiic Quad Solid State Relay Kit (COM-16566) Hardware <https://www.sparkfun.com/products/16833>
 
 **Software and Dependencies:**
-* `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
-* `Bus Device <https://github.com/adafruit/Adafruit_CircuitPython_BusDevice>`_
-
-* Adafruit CircuitPython firmware for the supported boards:
-  https://circuitpython.org/downloads
+* Adafruit CircuitPython <https://github.com/adafruit/circuitpython>
+* Bus Device <https://github.com/adafruit/Adafruit_CircuitPython_BusDevice>
+* Adafruit CircuitPython firmware for the supported boards: https://circuitpython.org/downloads
 
 * Adafruit's Bus Device library: https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
-# * Adafruit's Register library: https://github.com/adafruit/Adafruit_CircuitPython_Register
+* Adafruit's Register library: https://github.com/adafruit/Adafruit_CircuitPython_Register
 """
 
 # imports

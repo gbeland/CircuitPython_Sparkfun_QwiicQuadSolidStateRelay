@@ -45,8 +45,6 @@ Installing from PyPI
 .. note:: This library is not available on PyPI yet. Install documentation is included
    as a standard element. Stay tuned for PyPI availability!
 
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
-
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
 PyPI <https://pypi.org/project/circuitpython-sparkfun-qwiicquadsolidstaterelay/>`_.
 To install for current user:
@@ -97,7 +95,7 @@ Or the following command to update an existing version:
 
 Usage Example
 =============
-.. code-block:: code-block
+.. code-block:: 
 
     # import the CircuitPython board and busio libraries
     import board
