@@ -8,7 +8,7 @@
 
 CircuitPython library for SparkFun Qwiic Quad Solid State Relay Kit (COM-16833).
 
-* Author(s): Graham Beland
+* Author(s): Graham Beland, Sept. 2022
 
 Implementation Notes
 --------------------
