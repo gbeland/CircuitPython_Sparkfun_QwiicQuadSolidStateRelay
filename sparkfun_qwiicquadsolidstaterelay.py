@@ -64,7 +64,6 @@ class Sparkfun_QwiicQuadSolidStateRelay:
         self._debug = debug
 
     # public properites
-
     @property
     def connected(self):
         """Check to see of the relay is available.  Returns True if successful."""
