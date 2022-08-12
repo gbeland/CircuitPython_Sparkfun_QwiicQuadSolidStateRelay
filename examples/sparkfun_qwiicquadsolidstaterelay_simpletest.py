@@ -20,7 +20,7 @@ try:
     else:
         print("Relay does not appear to be connected. Please check wiring. ")
 except ValueError as e:
-    print("Error: Could not open Relay Controller Exception:" + str(e))
+    print("Error: Could not open Relay Controller rxception:" + str(e))
 
 # For a different address use QwiicRelay(i2c, address)
 # Warning - this is stored in non-volitile memory and you must remember the setting

@@ -57,7 +57,7 @@ class Sparkfun_QwiicQuadSolidStateRelay:
     """CircuitPython class for Sparkfun Qwicc Quad Solid State Relay"""
 
     def __init__(self, i2c, address=DEVICE_I2C_ADDRESS, debug=False):
-        """Initialize Qwiic Quad Solid State Relay for i2c communication."""
+        """Initialize Qwiic Quad Solid State Relay for i2c."""
         self._device = I2CDevice(i2c, address)
         # save handle to i2c bus in case address is changed
         self._i2c = i2c
