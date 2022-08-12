@@ -28,9 +28,9 @@ except ValueError as e:
 # relay.set_i2c_address(9)
 
 relay.relay_on(1)
-relay.on(2)
-relay.on(3)
-relay.on(4)
+relay.relay_on(2)
+relay.relay_on(3)
+relay.relay_on(4)
 relay.relay_off(1)
 relay.relay_off(4)
 relay.relay_all_toggle()
