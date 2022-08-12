@@ -16,7 +16,7 @@ Implementation Notes
 **Hardware:**
 
 * SparkFun Qwiic Quad Solid State Relay Kit (COM-16566)
-^ Hardware <https://www.sparkfun.com/products/16833>
+* Hardware <https://www.sparkfun.com/products/16833>
 
 **Software and Dependencies:**
 * Adafruit CircuitPython <https://github.com/adafruit/circuitpython>
