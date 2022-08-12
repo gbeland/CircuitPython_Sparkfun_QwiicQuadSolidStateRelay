@@ -15,21 +15,27 @@ Implementation Notes
 
 **Hardware:**
 
-* SparkFun Qwiic Quad Solid State Relay Kit (COM-16566) Hardware <https://www.sparkfun.com/products/16833>
+* SparkFun Qwiic Quad Solid State Relay Kit (COM-16566)
+^ Hardware <https://www.sparkfun.com/products/16833>
 
 **Software and Dependencies:**
 * Adafruit CircuitPython <https://github.com/adafruit/circuitpython>
 * Bus Device <https://github.com/adafruit/Adafruit_CircuitPython_BusDevice>
-* Adafruit CircuitPython firmware for the supported boards: https://circuitpython.org/downloads
+* Adafruit CircuitPython firmware for the supported boards:
+* https://circuitpython.org/downloads
 
-* Adafruit's Bus Device library: https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
-* Adafruit's Register library: https://github.com/adafruit/Adafruit_CircuitPython_Register
+* Adafruit's Bus Device library:
+* https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
+* Adafruit's Register library:
+* https://github.com/adafruit/Adafruit_CircuitPython_Register
 """
 
 # imports
 
 __version__ = "0.0.0-auto.0"
-__repo__ = "https://github.com/gbeland/CircuitPython_Sparkfun_QwiicQuadSolidStateRelay.git"
+__repo__ = (
+    "https://github.com/gbeland/CircuitPython_Sparkfun_QwiicQuadSolidStateRelay.git"
+)
 
 from time import sleep
 from adafruit_bus_device.i2c_device import I2CDevice
@@ -48,7 +54,7 @@ _REGISTER_CHANGE_ADDRESS = 0xC7
 
 # class
 class Sparkfun_QwiicQuadSolidStateRelay:
-    """CircuitPython class for the Sparkfun Qwicc Quad Solid State Relay"""
+    """CircuitPython class for Sparkfun Qwicc Quad Solid State Relay"""
 
     def __init__(self, i2c, address=DEVICE_I2C_ADDRESS, debug=False):
         """Initialize Qwiic Quad Solid State Relay for i2c communication."""
@@ -71,47 +77,47 @@ class Sparkfun_QwiicQuadSolidStateRelay:
         return True
 
     # public functions
-    def on(self, relayNum):
+    def relay_on(self, relay_num):
         """Turn the relay on (1-4)."""
-        if relayNum in range(1, 5):
-            result = self._read_command((_REGISTER_BASE_RELAY_STATUS + (relayNum - 1)))
+        if relay_num in range(1, 5):
+            result = self._read_command((_REGISTER_BASE_RELAY_STATUS + (relay_num - 1)))
             if result == 0:
-                self._write_command(_REGISTER_BASE_RELAY_TOGGLE + (relayNum - 1))
+                self._write_command(_REGISTER_BASE_RELAY_TOGGLE + (relay_num - 1))
         else:
             if self._debug:
                 print("Error: relay number out of range")
 
-    def off(self, relayNum):
+    def relay_off(self, relay_num):
         """Turn the relay on (1-4)."""
-        if relayNum in range(1, 5):
-            result = self._read_command((_REGISTER_BASE_RELAY_STATUS + (relayNum - 1)))
+        if relay_num in range(1, 5):
+            result = self._read_command((_REGISTER_BASE_RELAY_STATUS + (relay_num - 1)))
             if result != 0:
-                self._write_command(_REGISTER_BASE_RELAY_TOGGLE + (relayNum - 1))
+                self._write_command(_REGISTER_BASE_RELAY_TOGGLE + (relay_num - 1))
         else:
             if self._debug:
                 print("Error: relay number out of range")
 
-    def toggle(self, relayNum):
+    def relay_toggle(self, relay_num):
         """Toggle the relay on (1-4)."""
-        if relayNum in range(1, 5):
-            return self._write_command(_REGISTER_BASE_RELAY_TOGGLE + (relayNum - 1))
-        else:
-            if self._debug:
-                print("relay number out of range")
+        if relay_num in range(1, 5):
+            return self._write_command(_REGISTER_BASE_RELAY_TOGGLE + (relay_num - 1))
+        if self._debug:
+            print("relay number out of range")
+        return 0
 
-    def all_on(self):
+    def relay_all_on(self):
         """Turn all the relays on."""
         return self._write_command(_REGISTER_ALL_RELAY_ON)
 
-    def all_off(self):
+    def relay_all_off(self):
         """Turn all the relays off."""
         return self._write_command(_REGISTER_ALL_RELAY_OFF)
 
-    def all_toggle(self):
+    def relay_all_toggle(self):
         """Toggle all relays."""
         return self._write_command(_REGISTER_ALL_RELAY_TOGGLE)
 
-    def set_pwm(self, relayNum, pwmValue):
+    def relay_pwm_set(self, relay_num, pwm_value):
         """
         Sets the value for the slow PWM signal. Can be anywhere from 0(off) to 120(on)
         A full cycle takes 1 second.
@@ -121,14 +127,15 @@ class Sparkfun_QwiicQuadSolidStateRelay:
         :return: successful I2C transaction
         :rtype: bool
         """
-        for i in range(4):
-            return self._write_register(_REGISTER_BASE_RELAY_PWM + relayNum, pwmValue)
+        if relay_num in range(4):
+            return self._write_register(_REGISTER_BASE_RELAY_PWM + relay_num, pwm_value)
+        return 0
         # ----------------------------------------------------------------
 
     # get_pwm(relayNum)
     #
     # Gets the value for the slow PWM signal. Can be anywhere from 0 (off) to 120 (on).
-    def get_pwm(self, relayNum):
+    def relay_pwm_get(self, relay_num):
         """
         Gets the value for the slow PWM signal. Can be anywhere from 0(off) to 120(on)
 
@@ -136,8 +143,9 @@ class Sparkfun_QwiicQuadSolidStateRelay:
         :return: The value of the PWM signal, a value between 0 and 120
         :rtype: bool
         """
-        for i in range(4):
-            return self._read_command(_REGISTER_BASE_RELAY_PWM + relayNum)
+        if relay_num in range(4):
+            return self._read_command(_REGISTER_BASE_RELAY_PWM + relay_num)
+        return 0
 
     # ----------------------------------------------------------------
     # get_relay_state(relayNum)
@@ -145,16 +153,15 @@ class Sparkfun_QwiicQuadSolidStateRelay:
     # Returns the status of the relayNum you pass to it. Do not pass in a relay number
     # if you are using a single relay.
 
-    def get_relay_state(self, relayNum):
+    def relay_state_get(self, relay_num):
         """
         Returns true if the relay is currently on, and false if it is off.
         :return: Status of the relay
         :rtype: bool
         """
-        if self._read_command(_REGISTER_BASE_RELAY_STATUS + relayNum) == 0:
+        if self._read_command(_REGISTER_BASE_RELAY_STATUS + relay_num) == 0:
             return False
-        else:
-            return True
+        return True
 
     def set_i2c_address(self, new_address):
         """Change the i2c address of Relay and return True if successful.

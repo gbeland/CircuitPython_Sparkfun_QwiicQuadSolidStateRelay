@@ -18,21 +18,21 @@ try:
     if relay.connected:
         print("Relay connected. ")
     else:
-        print("Relay does not appear to be connected. Please check wiring.")
-except Exception as e:
+        print("Relay does not appear to be connected. Please check wiring. ")
+except ValueError as e:
     print("Error: Could not open Relay Controller Exception:" + str(e))
 
 # For a different address use QwiicRelay(i2c, address)
-# Warning - this is stored in non-volitile memory and you must remember the setting to change it back to the default address of 8.
+# Warning - this is stored in non-volitile memory and you must remember the setting
+# to change it back to the default address of  8.
 # relay.set_i2c_address(9)
 
-relay.on(1)
+relay.relay_on(1)
 relay.on(2)
 relay.on(3)
 relay.on(4)
-relay.off(1)
-relay.off(4)
-relay.all_toggle()
-relay.all_on()
-relay.all_off()
-    
+relay.relay_off(1)
+relay.relay_off(4)
+relay.relay_all_toggle()
+relay.relay_all_on()
+relay.relay_all_off()

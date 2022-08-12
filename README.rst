@@ -95,7 +95,7 @@ Or the following command to update an existing version:
 
 Usage Example
 =============
-.. code-block:: 
+.. code-block::
 
     # import the CircuitPython board and busio libraries
     import board
@@ -119,7 +119,7 @@ Usage Example
     # For a different address use QwiicRelay(i2c, address)
     # Warning - this is stored in non-volitile memory and you must remember the setting to change it back to the default address of 8.
     # relay.set_i2c_address(9)
-    
+
     relay.on(1)
     relay.on(2)
     relay.on(3)
@@ -129,7 +129,7 @@ Usage Example
     relay.all_toggle()
     relay.all_on()
     relay.all_off()
-    
+
 Documentation
 =============
 API documentation for this library can be found on `Read the Docs <https://circuitpython-sparkfun-qwiicquadsolidstaterelay.readthedocs.io/>`_.
