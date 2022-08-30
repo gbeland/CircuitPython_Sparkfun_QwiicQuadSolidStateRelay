@@ -99,38 +99,31 @@ Usage Example
 =============
 .. code-block::
 
-    # import the CircuitPython board and busio libraries
-    import board
-    import sparkfun_qwiicquadsolidstaterelay
+    """ QuadRelayTest """
+# QuadRelayTest: Copyright (c) 2022 Graham Beland
+#
+# SPDX-License-Identifier: MIT
+# import the CircuitPython board and busio libraries
+import time as tm
+# CircuitPython board
+import board
+# the sparkfun_qwiicquadsolidstaterelay
+import sparkfun_qwiicquadsolidstaterelay
 
-    # Create bus object using the board's I2C port
-    i2c = board.I2C()
+# Create bus object using the board's I2C port
+i2c = board.I2C()
 
-    # Note: default i2c address is 8
-    relay = None
-    try:
-        relay = sparkfun_qwiicquadsolidstaterelay.Sparkfun_QwiicQuadSolidStateRelay(i2c)
-        print("Opened: Relay Controller")
-        if relay.connected:
-            print("Relay connected. ")
-        else:
-            print("Relay does not appear to be connected. Please check wiring.")
-    except Exception as e:
-        print("Error: Could not open Relay Controller Exception:" + str(e))
+# Note: default i2c address is 8
+theRelay = sparkfun_qwiicquadsolidstaterelay.Sparkfun_QwiicQuadSolidStateRelay(i2c)
+print("Opened: Relay Controller")
+if theRelay.connected:
+    print("Relay connected. ")
+    theRelay.relay_on(1)
+    tm.sleep(1)
+    theRelay.relay_off(1)
+else:
+    print("Relay does not appear to be connected. Please check wiring.")
 
-    # For a different address use QwiicRelay(i2c, address)
-    # Warning - this is stored in non-volitile memory and you must remember the setting to change it back to the default address of 8.
-    # relay.set_i2c_address(9)
-
-    relay.on(1)
-    relay.on(2)
-    relay.on(3)
-    relay.on(4)
-    relay.off(1)
-    relay.off(4)
-    relay.all_toggle()
-    relay.all_on()
-    relay.all_off()
 
 Documentation
 =============
