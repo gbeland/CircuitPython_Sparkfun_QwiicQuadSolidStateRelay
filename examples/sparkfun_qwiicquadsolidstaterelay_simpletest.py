@@ -3,8 +3,6 @@
 #
 # SPDX-License-Identifier: MIT
 # import the CircuitPython board and busio libraries
-import time as tm
-
 # CircuitPython board
 import board
 
@@ -20,7 +18,6 @@ print("Opened: Relay Controller")
 if theRelay.connected:
     print("Relay connected. ")
     theRelay.relay_on(1)
-    tm.sleep(1)
     theRelay.relay_off(1)
 else:
     print("Relay does not appear to be connected. Please check wiring.")
