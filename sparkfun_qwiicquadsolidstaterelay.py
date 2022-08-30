@@ -37,7 +37,7 @@ __repo__ = (
     "https://github.com/gbeland/CircuitPython_Sparkfun_QwiicQuadSolidStateRelay.git"
 )
 
-from time import sleep
+import time as tm
 from adafruit_bus_device.i2c_device import I2CDevice
 
 # public constants
@@ -176,7 +176,7 @@ class Sparkfun_QwiicQuadSolidStateRelay:
             return False
         self._write_register(_REGISTER_CHANGE_ADDRESS, new_address)
         # wait a second for relay to settle after change
-        sleep(1)
+        tm.sleep(1)
         # try to re-create new i2c device at new address
         try:
             self._device = I2CDevice(self._i2c, new_address)
