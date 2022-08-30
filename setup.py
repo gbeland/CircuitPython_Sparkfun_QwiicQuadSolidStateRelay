@@ -38,11 +38,10 @@ setup(
     url="https://github.com/gbeland/CircuitPython_Sparkfun_QwiicQuadSolidStateRelay.git",
     # Author details
     author="Graham Beland",
-    author_email="",  # TODO: Add your email here
+    author_email="gbeland@gmail.com",  # TODO: Add your email here
     install_requires=[
         "Adafruit-Blinka",
         "adafruit-circuitpython-busdevice",
-        "time",
     ],
     # Choose your license
     license="MIT",
