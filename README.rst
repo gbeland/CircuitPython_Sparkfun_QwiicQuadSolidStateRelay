@@ -26,6 +26,8 @@ CircuitPython library for SparkFun Qwiic Quad Solid State Relay Kit (COM-16833).
 
 `SparkFun Qwiic Quad Solid State Relay Kit (COM-16566) <https://www.sparkfun.com/products/16833>`_
 
+(added PyPi step3)
+
 Dependencies
 =============
 This driver depends on:
